@@ -1,0 +1,46 @@
+.form {
+}
+.label {
+  margin: 0;
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgb(208, 194, 230);
+}
+
+.input {
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  transition: 1s;
+
+  &:focus &:hover {
+    box-shadow: 0 0 5px 2px rgb(174, 115, 241);
+    transition: 1s;
+  }
+}
+
+.btn {
+  color: #333;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  min-width: 30%;
+  max-width: 50%;
+  background-color: teal;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 1s;
+
+  &:hover {
+    border-color: rgb(34, 119, 70);
+    color: #333;
+    box-shadow: 0 0 10px 0 rgb(34, 119, 70);
+    transform: scale(1.1);
+    font-weight: bold;
+    transition: 1s;
+  }
+}

@@ -1,0 +1,37 @@
+.contactList {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+}
+
+.contactsItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  color: rgb(101, 79, 119);
+  /* color          : rgb(87, 85, 84); */
+}
+
+.listBtn {
+  padding: 0;
+  border: none;
+  margin-left: 10px;
+  width: 22px;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: bold;
+  color: rgb(101, 79, 119);
+  transition: 1s;
+  outline: none;
+
+  &:hover {
+    transition: 1s;
+    transform: scale(1.2);
+    color: rgb(82, 49, 2);
+  }
+}

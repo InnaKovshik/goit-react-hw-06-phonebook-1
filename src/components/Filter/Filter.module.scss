@@ -1,0 +1,16 @@
+.findField {
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(85, 73, 95);
+  text-shadow: 1px 1px 2px rgb(187, 164, 223);
+}
+
+.findInput {
+  transition: 1s;
+  margin-top: 5px;
+  margin-left: 5px;
+
+  &:hover {
+    box-shadow: 0 0 5px 1px rgb(58, 128, 107);
+  }
+}

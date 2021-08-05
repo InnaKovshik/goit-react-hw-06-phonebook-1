@@ -1,9 +1,7 @@
-import {
-  configureStore,
-  getDefaultMiddleware,
-  combineReducers,
-} from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
+import storage from 'redux-persist/lib/storage';
+
 import {
   persistStore,
   persistReducer,
@@ -14,37 +12,36 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import thunk from 'redux-thunk';
 
-import contactsReducer from './reducers/contactsReducer';
-import filterReducer from './reducers/filterReducer';
+import contactsReducer from './contacts/reducers/contactsReducer';
+import filterReducer from './contacts/reducers/filterReducer';
+import loadingReducer from './contacts/reducers/loadingReducer';
+import errorReducer from './contacts/reducers/errorReducer';
+import authReducer from '';
 
-const contactsPersistConfig = {
-  key: 'contacts',
+const persistConfig = {
+  key: 'token',
   storage,
-  blacklist: ['filter'],
+  whitelist: ['token'],
 };
 
-const persistedReducer = persistReducer(
-  contactsPersistConfig,
-  combineReducers({
+const store = configureStore({
+  reducer: {
     items: contactsReducer,
     filter: filterReducer,
-  }),
-);
-const middleware = [
-  ...getDefaultMiddleware({
+    loading: loadingReducer,
+    error: errorReducer,
+    auth: persistReducer(persistConfig, authReducer),
+  },
+  middleware: getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
+    thunk,
+    logger,
   }),
-  logger,
-];
-
-const store = configureStore({
-  reducer: persistedReducer,
   devTools: process.env.NODE_ENV === 'development',
-  middleware,
 });
 
 const persistor = persistStore(store);
